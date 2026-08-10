@@ -1,0 +1,14 @@
+=== CLASS IMBALANCE COMPARISON (Random Forest) ===
+                Variant  Precision   Recall  F1 Score
+               Baseline   0.786885 0.695652  0.738462
+  Class Weight Balanced   0.777778 0.710145  0.742424
+SMOTE (Train Fold Only)   0.753623 0.753623  0.753623
+
+=== GRIDSEARCHCV RANDOM FOREST RESULTS ===
+Best Parameters: {'max_depth': 8, 'max_features': 'sqrt', 'n_estimators': 150}
+OOB Score (Out-Of-Bag): 0.8272
+=== MULTIVARIATE LINEAR REGRESSION METRICS (Target: Fare) ===
+MAE: 18.87 | RMSE: 30.92 | R²: 0.3822 | Adjusted R²: 0.3531
+Full end-to-end pipeline saved successfully to 'full_pipeline.joblib'.
+Reloaded Pipeline Verification on Raw Input Samples:
+Predicted Classes: [0 0 0]
