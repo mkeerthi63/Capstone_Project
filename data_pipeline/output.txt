@@ -1,0 +1,66 @@
+Starting web scraping from http://books.toscrape.com/...
+ Successfully scraped 60 books without detail-page connection drops.
+Cleaning and enriching scraped data...
+Cleaned data exported to CSV file: 'cleaned_books.csv'.
+Loading data into SQLite database at 'books_catalog.db'...
+SQLite database populated successfully.
+
+==================================================
+ SQL QUERIES EXECUTION 
+==================================================
+--- Query 1: Top 5 Expensive Books (SELECT, WHERE, ORDER BY, LIMIT) ---
+                                                                 title  price_gbp  price_inr
+                                         Boar Island (Anna Pigeon #19)      59.48    6275.14
+The No. 1 Ladies' Detective Agency (No. 1 Ladies' Detective Agency #1)      57.70    6087.35
+                                      A Year in Provence (Provence #1)      56.88    6000.84
+                                                   The Past Never Ends      56.50    5960.75
+                               A Flight of Arrows (The Pathfinders #2)      55.53    5858.42
+--- Query 2: Distinct Star Ratings (DISTINCT) ---
+ rating
+      1
+      2
+      3
+      4
+      5
+--- Query 3: Price Range £20 to £40 (BETWEEN) ---
+                                           title  price_gbp
+            Blood Defense (Samantha Brinkman #1)      20.30
+                            Love, Lies and Spies      20.55
+Delivering the Truth (Quaker Midwife Mystery #1)      20.89
+                          Voyager (Outlander #3)      21.07
+               The Silkworm (Cormoran Strike #2)      23.05
+--- Query 4: Ratings IN (4, 5) ---
+                                                                   title  rating  price_inr
+                                      1,000 Places to See Before You Die       5    2751.44
+                                  A Time of Torment (Charlie Parker #14)       5    5100.92
+       What Happened on Beale Street (Secrets of the South Mysteries #2)       5    2676.54
+The Bachelor Girl's Guide to Murder (Herringford and Watts Mysteries #1)       5    5517.65
+                                       The Silkworm (Cormoran Strike #2)       5    2431.78
+--- Query 5: Relational JOIN (Books + Categories) ---
+ book_id                                                                    title      category_name  rating  price_gbp  price_inr
+      39   The No. 1 Ladies' Detective Agency (No. 1 Ladies' Detective Agency #1)            Mystery       4      57.70    6087.35
+       8                                         A Year in Provence (Provence #1)             Travel       4      56.88    6000.84
+      14                                                      The Past Never Ends            Mystery       4      56.50    5960.75
+      46                                  A Flight of Arrows (The Pathfinders #2) Historical Fiction       5      55.53    5858.42
+      23                    Murder at the 42nd Street Library (Raymond Ambler #1)            Mystery       4      54.36    5734.98
+      30 The Bachelor Girl's Guide to Murder (Herringford and Watts Mysteries #1)            Mystery       5      52.30    5517.65
+       2         Full Moon over Noah’s Ark: An Odyssey to Mount Ararat and Beyond             Travel       4      49.43    5214.86
+      20                                   A Time of Torment (Charlie Parker #14)            Mystery       5      48.35    5100.92
+      12                                                            Sharp Objects            Mystery       4      47.82    5045.01
+      16                          The Murder of Roger Ackroyd (Hercule Poirot #4)            Mystery       4      44.10    4652.55
+==================================================
+ PANDAS PD.MERGE COMPARISON 
+==================================================
+--- Pandas pd.merge Output ---
+ book_id                                                                    title      category_name  rating  price_gbp  price_inr
+      39   The No. 1 Ladies' Detective Agency (No. 1 Ladies' Detective Agency #1)            Mystery       4      57.70    6087.35
+       8                                         A Year in Provence (Provence #1)             Travel       4      56.88    6000.84
+      14                                                      The Past Never Ends            Mystery       4      56.50    5960.75
+      46                                  A Flight of Arrows (The Pathfinders #2) Historical Fiction       5      55.53    5858.42
+      23                    Murder at the 42nd Street Library (Raymond Ambler #1)            Mystery       4      54.36    5734.98
+      30 The Bachelor Girl's Guide to Murder (Herringford and Watts Mysteries #1)            Mystery       5      52.30    5517.65
+       2         Full Moon over Noah’s Ark: An Odyssey to Mount Ararat and Beyond             Travel       4      49.43    5214.86
+      20                                   A Time of Torment (Charlie Parker #14)            Mystery       5      48.35    5100.92
+      12                                                            Sharp Objects            Mystery       4      47.82    5045.01
+      16                          The Murder of Roger Ackroyd (Hercule Poirot #4)            Mystery       4      44.10    4652.55
+ SQL JOIN matches Pandas pd.merge output perfectly!
