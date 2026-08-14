@@ -1,4 +1,4 @@
-# End-to-End Data & AI Engineering Project
+# End-to-End Capstone Project
 
 A three-module project demonstrating an end-to-end workflow across **data engineering, data analytics & machine learning, and Generative AI/RAG application development**.
 
